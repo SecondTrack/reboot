@@ -126,22 +126,24 @@ static void runInstall(RBApp*a, void(^redraw)(void)){
     if(_app.requires.length) [meta addObject:LF(@"needs %@",_app.requires)];
     if(meta.count){ UILabel*m=[[UILabel alloc] initWithFrame:CGRectMake(16,y,W-32,16)]; m.text=[meta componentsJoinedByString:@" · "]; m.font=[UIFont systemFontOfSize:12]; m.textColor=MUT; m.backgroundColor=[UIColor clearColor]; m.adjustsFontSizeToFitWidth=YES; [sc addSubview:m]; y+=26; }
 
-    // Screenshots
-    UILabel*sh=[[UILabel alloc] initWithFrame:CGRectMake(16,y,W-32,18)]; sh.text=L(@"Preview"); sh.font=[UIFont boldSystemFontOfSize:15]; sh.textColor=INK; sh.backgroundColor=[UIColor clearColor]; [sc addSubview:sh];
-    UIScrollView*gal=[[UIScrollView alloc] initWithFrame:CGRectMake(0,y+26,W,228)]; gal.showsHorizontalScrollIndicator=NO; [sc addSubview:gal];
-    CGFloat sx=16, sw=148, shh=222; int n=0; NSString*k=localKey(_app);
-    for(int i=1;i<=6 && k;i++){
-        if([[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%d",k,i] ofType:@"png" inDirectory:@"ic"]){
-            UIView*tile=shotTile(_app,i,CGRectMake(sx,3,sw,shh));
+    // Screenshots: nur echte, mitgelieferte Bilder. Ohne Bilder gibt es keinen Vorschau-Bereich (keine Platzhalter).
+    NSString*k=localKey(_app); NSMutableArray*shots=[NSMutableArray array];
+    for(int i=1;i<=6 && k;i++) if([[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@_%d",k,i] ofType:@"png" inDirectory:@"ic"]) [shots addObject:@(i)];
+    CGFloat dy=y;
+    if(shots.count){
+        UILabel*sh=[[UILabel alloc] initWithFrame:CGRectMake(16,y,W-32,18)]; sh.text=L(@"Preview"); sh.font=[UIFont boldSystemFontOfSize:15]; sh.textColor=INK; sh.backgroundColor=[UIColor clearColor]; [sc addSubview:sh];
+        UIScrollView*gal=[[UIScrollView alloc] initWithFrame:CGRectMake(0,y+26,W,228)]; gal.showsHorizontalScrollIndicator=NO; [sc addSubview:gal];
+        CGFloat sx=16, sw=148, shh=222;
+        for(NSNumber*i in shots){
+            UIView*tile=shotTile(_app,i.intValue,CGRectMake(sx,3,sw,shh));
             [tile addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomShot:)]]; tile.userInteractionEnabled=YES;
-            [gal addSubview:tile]; sx+=sw+12; n++;
+            [gal addSubview:tile]; sx+=sw+12;
         }
+        gal.contentSize=CGSizeMake(sx,shh);
+        dy=y+26+228+16;
     }
-    if(n==0){ for(int i=1;i<=2;i++){ [gal addSubview:shotTile(_app,i,CGRectMake(sx,3,sw,shh))]; sx+=sw+12; } }
-    gal.contentSize=CGSizeMake(sx,shh);
 
     // Beschreibung + Funktionen
-    CGFloat dy=y+26+228+16;
     UILabel*bt=[[UILabel alloc] initWithFrame:CGRectMake(16,dy,W-32,18)]; bt.text=L(@"Description"); bt.font=[UIFont boldSystemFontOfSize:15]; bt.textColor=INK; bt.backgroundColor=[UIColor clearColor]; [sc addSubview:bt];
     NSMutableString*body=[NSMutableString stringWithString:_app.text?:_app.shortText?:@""];
     if(_app.features.count){ [body appendString:@"\n"]; for(NSString*f in _app.features) [body appendFormat:@"\n•  %@",f]; }
