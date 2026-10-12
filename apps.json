@@ -133,7 +133,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.browser",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/browser",
       "requires": "",
       "license": "GPL-3.0",
@@ -148,10 +148,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/browser.png",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/browser/releases/download/v0.1.1/de.mesh.browser_0.1.1_iphoneos-arm.deb",
-        "size": 469914,
-        "sha256": "1ebec0d695af27f29f22c708c338500af3e7c3b833f480249c06a3d25ef6435a"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/browser/releases/download/v0.1.2/de.mesh.browser_0.1.2_iphoneos-arm.deb",
+        "size": 469574,
+        "sha256": "727711b548686bd071ebb8b7dff459137ef90438f4e4f43be104a3a4ca94e29f"
       },
       "short_de": "Heutige Webseiten wieder lesen",
       "category_de": "Medien",
