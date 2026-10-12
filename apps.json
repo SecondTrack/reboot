@@ -301,7 +301,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.ios",
-      "version": "0.1.8",
+      "version": "0.1.9",
       "repo": "SecondTrack/mesh",
       "requires": "",
       "license": "GPL-3.0",
@@ -318,10 +318,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/mesh.png?v=39332b3d",
       "private": false,
       "release": {
-        "version": "0.1.8",
-        "url": "https://github.com/SecondTrack/mesh/releases/download/v0.1.8/de.mesh.ios_0.1.8_iphoneos-arm.deb",
-        "size": 13488044,
-        "sha256": "08df7cc1c00d9c0cb24a9c9ca99e0125f07c1e65cf023602f127f603e8bf139b"
+        "version": "0.1.9",
+        "url": "https://github.com/SecondTrack/mesh/releases/download/v0.1.9/de.mesh.ios_0.1.9_iphoneos-arm.deb",
+        "size": 13488326,
+        "sha256": "0961d35a72e0b4f8fadaabcb19adaa894e322b640d29248c03cfb631cb9aeddb"
       },
       "short_de": "Verschlüsselter Messenger ohne Telefonnummer – über das Tor-Netzwerk",
       "category_de": "Kommunikation",
