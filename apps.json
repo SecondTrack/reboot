@@ -93,7 +93,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.batt",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "repo": "SecondTrack/volt",
       "requires": "",
       "license": "GPL-3.0",
@@ -108,10 +108,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/volt.png?v=a2cba93d",
       "private": false,
       "release": {
-        "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/volt/releases/download/v0.1.2/de.mesh.batt_0.1.2_iphoneos-arm.deb",
-        "size": 30742,
-        "sha256": "74fced0d104a4c930b2541ffde15231b8ff756940ec1b3193d2037065335a748"
+        "version": "0.1.3",
+        "url": "https://github.com/SecondTrack/volt/releases/download/v0.1.3/de.mesh.batt_0.1.3_iphoneos-arm.deb",
+        "size": 31386,
+        "sha256": "3efd3651005cce9f4203de4aeeb1dde3369120d7adb6d17963782626a7ce0cff"
       },
       "name_de": "Volt",
       "short_de": "Akku-Monitor mit Belastungstest",
