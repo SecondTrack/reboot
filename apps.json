@@ -261,7 +261,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.matrix",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "repo": "SecondTrack/weave",
       "requires": "Matrix-Konto",
       "license": "GPL-3.0",
@@ -276,10 +276,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/weave.png?v=d3f04a05",
       "private": false,
       "release": {
-        "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/weave/releases/download/v0.1.2/de.mesh.matrix_0.1.2_iphoneos-arm.deb",
-        "size": 322966,
-        "sha256": "90ccf63c5a95554b6ccfce240f04fe886bf2fdf843db6790007bdb955c9f901a"
+        "version": "0.1.3",
+        "url": "https://github.com/SecondTrack/weave/releases/download/v0.1.3/de.mesh.matrix_0.1.3_iphoneos-arm.deb",
+        "size": 323772,
+        "sha256": "616166ada4dc41f18624f73aa0abac869bc7c3befd009be14b12766b187651d3"
       },
       "short_de": "Chatten über Matrix",
       "category_de": "Kommunikation",
