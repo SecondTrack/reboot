@@ -345,7 +345,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.music",
-      "version": "0.2.5",
+      "version": "0.2.6",
       "repo": "SecondTrack/musik",
       "requires": "Spotify-Konto",
       "license": "GPL-3.0",
@@ -358,13 +358,13 @@
         "Gapless playback thanks to preloading",
         "Control via headphones, Bluetooth and car"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/musik.png?v=d410320b",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/musik.png?v=257b8d5e",
       "private": false,
       "release": {
-        "version": "0.2.5",
-        "url": "https://github.com/SecondTrack/musik/releases/download/v0.2.5/de.mesh.music_0.2.5_iphoneos-arm.deb",
-        "size": 584382,
-        "sha256": "eb85b56838f578973b20b2f795893bc0bd5976bcbf6046db947ced4a88ac1074"
+        "version": "0.2.6",
+        "url": "https://github.com/SecondTrack/musik/releases/download/v0.2.6/de.mesh.music_0.2.6_iphoneos-arm.deb",
+        "size": 585428,
+        "sha256": "83ff66a392dbf90ee813820b381a566aba598fe5bc7b956a4d374bd3c4703158"
       },
       "name_de": "Riff",
       "short_de": "Musik für dein Spotify-Konto",
@@ -441,7 +441,7 @@
         "Mini player and double-tap to skip",
         "Read comments"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tube.png?v=42222443",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tube.png?v=abc87b5c",
       "private": false,
       "release": {
         "version": "0.2.3",
