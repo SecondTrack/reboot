@@ -1,0 +1,36 @@
+{
+  "id": "reboot",
+  "name": "Reboot App Store",
+  "short": "The app store for your iPod",
+  "category": "Store",
+  "status": "beta",
+  "ios": [
+    "6.1.6"
+  ],
+  "package": "de.mesh.shop",
+  "version": "0.2.12",
+  "repo": "SecondTrack/reboot",
+  "requires": "",
+  "license": "GPL-3.0",
+  "install": "GitHub release: latest release, *.deb asset",
+  "bundle": "de.mesh.shop",
+  "text": "Reboot is the app everything runs through – right on your home screen. Browse every app with icon, description and preview, search for what you need, install and update with one tap, and open installed apps directly.",
+  "features": [
+    "All apps in one place",
+    "Search",
+    "Install and update with one tap",
+    "Open installed apps"
+  ],
+  "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/reboot.png",
+  "private": false,
+  "name_de": "Reboot Appstore",
+  "short_de": "Der App Store auf deinem iPod",
+  "category_de": "Store",
+  "text_de": "Der Reboot Appstore ist die App, über die alles läuft – direkt auf dem Home-Bildschirm. Du siehst alle Apps mit Icon, Beschreibung und Vorschau, suchst gezielt und öffnest Installiertes mit einem Tipp.",
+  "features_de": [
+    "Alle Apps an einem Ort",
+    "Suche",
+    "Öffnen",
+    "Installieren"
+  ]
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key><string>en</string>
+	<key>CFBundleLocalizations</key><array><string>en</string><string>de</string></array>
+	<key>CFBundleDisplayName</key><string>Reboot</string>
+	<key>CFBundleExecutable</key><string>Shop</string>
+	<key>CFBundleIdentifier</key><string>de.mesh.shop</string>
+	<key>CFBundleName</key><string>Shop</string>
+	<key>CFBundlePackageType</key><string>APPL</string>
+	<key>CFBundleVersion</key><string>0.2.12</string>
+	<key>LSRequiresIPhoneOS</key><true/>
+	<key>CFBundleIconFiles</key><array><string>Icon.png</string><string>Icon@2x.png</string></array>
+	<key>UIPrerenderedIcon</key><true/>
+	<key>UIDeviceFamily</key><array><integer>1</integer></array>
+	<key>UIStatusBarHidden</key><true/>
+	<key>UISupportedInterfaceOrientations</key><array><string>UIInterfaceOrientationPortrait</string></array>
+</dict>
+</plist>

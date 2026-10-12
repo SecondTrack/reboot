@@ -1,0 +1,57 @@
+// Reboot (Shop) — English (identity table, English is the fallback)
+
+// App names (catalog)
+"Battery" = "Battery";
+"Brightness" = "Brightness";
+"Diagnostics" = "Diagnostics";
+"Mesh" = "Mesh";
+"Spotify" = "Spotify";
+
+// App short descriptions (catalog)
+"Battery monitor + stress test" = "Battery monitor + stress test";
+"Brightness slider with presets" = "Brightness slider with presets";
+"Device test suite · 7 tests" = "Device test suite · 7 tests";
+"Encrypted messenger" = "Encrypted messenger";
+"Music player" = "Music player";
+
+// App long descriptions (catalog)
+"Shows charge level, voltage, current, temperature, charge cycles and the health of your battery in real time. The stress test drives the CPU until shutdown, measures the capacity actually drained and gives an honest condition grade." = "Shows charge level, voltage, current, temperature, charge cycles and the health of your battery in real time. The stress test drives the CPU until shutdown, measures the capacity actually drained and gives an honest condition grade.";
+"Sets the system brightness directly — a big slider plus presets for 10, 30, 60 and 100 %. The value is kept even after locking." = "Sets the system brightness directly — a big slider plus presets for 10, 30, 60 and 100 %. The value is kept even after locking.";
+"Checks your device in seven tests: display/pixels, touchscreen, sensors with spirit level, CPU & RAM with benchmark, storage with speed test, speaker and microphone. Ideal for a full check before selling." = "Checks your device in seven tests: display/pixels, touchscreen, sensors with spirit level, CPU & RAM with benchmark, storage with speed test, speaker and microphone. Ideal for a full check before selling.";
+"Decentralized, encrypted messenger over Nostr and Tor. Anonymous, without a phone number, without a central server." = "Decentralized, encrypted messenger over Nostr and Tor. Anonymous, without a phone number, without a central server.";
+"Music player in Spotify style: search, library, playlists and playback with a seamless transition to the next song thanks to preloading." = "Music player in Spotify style: search, library, playlists and playback with a seamless transition to the next song thanks to preloading.";
+
+// Buttons and labels
+"Preview" = "Preview";
+"Open" = "Open";
+"Install" = "Install";
+"Description" = "Description";
+"Tap to close" = "Tap to close";
+"Installation is being prepared…" = "Installation is being prepared…";
+"Apps for your iPod" = "Apps for your iPod";
+"Search" = "Search";
+"Nothing found" = "Nothing found";
+
+"Update" = "Update";
+"Private" = "Private";
+"Soon" = "Soon";
+"Version %@" = "Version %@";
+"installed: %@" = "installed: %@";
+"needs %@" = "needs %@";
+"Remove app" = "Remove app";
+"Remove this app from your iPod?" = "Remove this app from your iPod?";
+"Cancel" = "Cancel";
+"Remove" = "Remove";
+"Checking for apps and updates …" = "Checking for apps and updates …";
+"Offline – showing the last known list" = "Offline – showing the last known list";
+"%ld updates available" = "%ld updates available";
+"Loading …" = "Loading …";
+
+"Done" = "Done";
+"Reboot Appstore · Version %@" = "Reboot Appstore · Version %@";
+"Reboot is the app store by Second Track for old iPods. We give them a second life: used devices, lovingly refurbished – and new apps that make them useful again today." = "Reboot is the app store by Second Track for old iPods. We give them a second life: used devices, lovingly refurbished – and new apps that make them useful again today.";
+"OPEN SOURCE" = "OPEN SOURCE";
+"Every app is open source under the GPL-3.0 and lives in its own repository on GitHub. Anyone can read, check and improve the code." = "Every app is open source under the GPL-3.0 and lives in its own repository on GitHub. Anyone can read, check and improve the code.";
+"Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed." = "Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed.";
+"Source code on GitHub" = "Source code on GitHub";
+"Not affiliated with Apple. iPod is a trademark of Apple Inc." = "Not affiliated with Apple. iPod is a trademark of Apple Inc.";

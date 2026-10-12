@@ -1,0 +1,7 @@
+#!/bin/sh
+# Installations-Helfer braucht Root-Rechte (setuid), damit der Store Apps per dpkg installieren kann.
+chown root:wheel /Applications/Shop.app/rbhelper
+chmod 4755 /Applications/Shop.app/rbhelper
+mkdir -p /var/mobile/Library/Reboot/dl && chown -R mobile:mobile /var/mobile/Library/Reboot
+su mobile -c uicache 2>/dev/null || true
+exit 0

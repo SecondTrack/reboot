@@ -1,0 +1,57 @@
+// Reboot (Shop) — Deutsch
+
+// App-Namen (Katalog)
+"Battery" = "Batterie";
+"Brightness" = "Helligkeit";
+"Diagnostics" = "Diagnose";
+"Mesh" = "Mesh";
+"Spotify" = "Spotify";
+
+// App-Kurzbeschreibungen (Katalog)
+"Battery monitor + stress test" = "Akku-Monitor + Belastungstest";
+"Brightness slider with presets" = "Helligkeitsregler mit Presets";
+"Device test suite · 7 tests" = "Geräte-Testsuite · 7 Tests";
+"Encrypted messenger" = "Verschlüsselter Messenger";
+"Music player" = "Musik-Player";
+
+// App-Langbeschreibungen (Katalog)
+"Shows charge level, voltage, current, temperature, charge cycles and the health of your battery in real time. The stress test drives the CPU until shutdown, measures the capacity actually drained and gives an honest condition grade." = "Zeigt Ladestand, Spannung, Strom, Temperatur, Ladezyklen und Gesundheit deines Akkus in Echtzeit. Der Belastungstest lastet die CPU bis zur Abschaltung aus, misst die wirklich entnommene Kapazität und vergibt eine ehrliche Zustands-Note.";
+"Sets the system brightness directly — a big slider plus presets for 10, 30, 60 and 100 %. The value is kept even after locking." = "Stellt die System-Helligkeit direkt ein — großer Regler plus Presets für 10, 30, 60 und 100 %. Der Wert bleibt auch nach dem Sperren erhalten.";
+"Checks your device in seven tests: display/pixels, touchscreen, sensors with spirit level, CPU & RAM with benchmark, storage with speed test, speaker and microphone. Ideal for a full check before selling." = "Prüft dein Gerät in sieben Tests: Display/Pixel, Touchscreen, Sensoren mit Wasserwaage, CPU & RAM mit Benchmark, Speicher mit Speed-Test, Lautsprecher und Mikrofon. Ideal fürs Durchchecken vor dem Verkauf.";
+"Decentralized, encrypted messenger over Nostr and Tor. Anonymous, without a phone number, without a central server." = "Dezentraler, verschlüsselter Messenger über Nostr und Tor. Anonym, ohne Telefonnummer, ohne zentralen Server.";
+"Music player in Spotify style: search, library, playlists and playback with a seamless transition to the next song thanks to preloading." = "Musik-Player im Spotify-Look: Suche, Bibliothek, Playlists und Wiedergabe mit nahtlosem Übergang zum nächsten Song dank Vorladen.";
+
+// Buttons und Beschriftungen
+"Preview" = "Vorschau";
+"Open" = "Öffnen";
+"Install" = "Installieren";
+"Description" = "Beschreibung";
+"Tap to close" = "Tippen zum Schließen";
+"Installation is being prepared…" = "Installation wird vorbereitet…";
+"Apps for your iPod" = "Apps für deinen iPod";
+"Search" = "Suchen";
+"Nothing found" = "Nichts gefunden";
+
+"Update" = "Update";
+"Private" = "Privat";
+"Soon" = "Bald";
+"Version %@" = "Version %@";
+"installed: %@" = "installiert: %@";
+"needs %@" = "braucht %@";
+"Remove app" = "App entfernen";
+"Remove this app from your iPod?" = "Diese App vom iPod entfernen?";
+"Cancel" = "Abbrechen";
+"Remove" = "Entfernen";
+"Checking for apps and updates …" = "Suche nach Apps und Updates …";
+"Offline – showing the last known list" = "Offline – zeige den letzten Stand";
+"%ld updates available" = "%ld Updates verfügbar";
+"Loading …" = "Laden …";
+
+"Done" = "Fertig";
+"Reboot Appstore · Version %@" = "Reboot Appstore · Version %@";
+"Reboot is the app store by Second Track for old iPods. We give them a second life: used devices, lovingly refurbished – and new apps that make them useful again today." = "Reboot ist der App Store von Second Track für alte iPods. Wir geben ihnen ein zweites Leben: gebrauchte Geräte, liebevoll aufbereitet – und neue Apps, mit denen sie heute wieder etwas taugen.";
+"OPEN SOURCE" = "OPEN SOURCE";
+"Every app is open source under the GPL-3.0 and lives in its own repository on GitHub. Anyone can read, check and improve the code." = "Jede App ist Open Source unter der GPL-3.0 und liegt in einem eigenen Repository auf GitHub. Jeder kann den Code lesen, prüfen und verbessern.";
+"Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed." = "Sicher installiert: Apps kommen nur über verschlüsselte Verbindungen mit geprüften Zertifikaten, und jedes Paket wird vor der Installation gegen seine SHA-256-Prüfsumme geprüft.";
+"Source code on GitHub" = "Quellcode auf GitHub";
+"Not affiliated with Apple. iPod is a trademark of Apple Inc." = "Nicht mit Apple verbunden. iPod ist eine Marke von Apple Inc.";
