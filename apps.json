@@ -427,7 +427,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.tasks",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/tasks",
       "requires": "",
       "license": "GPL-3.0",
@@ -442,10 +442,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tasks.png",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/tasks/releases/download/v0.1.1/de.mesh.tasks_0.1.1_iphoneos-arm.deb",
-        "size": 17054,
-        "sha256": "f7aef79e8a7b6427027ec8bcd5eb5182635b06652015d9a17235fc32edfa962b"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/tasks/releases/download/v0.1.2/de.mesh.tasks_0.1.2_iphoneos-arm.deb",
+        "size": 17062,
+        "sha256": "acc4e62fd1cba0a13694da50e4e344881c994b046681784461134c2be58157d2"
       },
       "short_de": "Speicher frei machen",
       "category_de": "Werkzeuge",
