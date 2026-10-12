@@ -133,7 +133,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.files",
-      "version": "1.2.2",
+      "version": "1.2.3",
       "repo": "SecondTrack/dateien",
       "requires": "",
       "license": "GPL-3.0",
@@ -149,10 +149,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/dateien.png?v=7e6305a7",
       "private": false,
       "release": {
-        "version": "1.2.2",
-        "url": "https://github.com/SecondTrack/dateien/releases/download/v1.2.2/de.mesh.files_1.2.2_iphoneos-arm.deb",
-        "size": 107752,
-        "sha256": "c26859b530d542694c0f9eeaa82e042b3bf07e50e6e835268bd60994a0ae4122"
+        "version": "1.2.3",
+        "url": "https://github.com/SecondTrack/dateien/releases/download/v1.2.3/de.mesh.files_1.2.3_iphoneos-arm.deb",
+        "size": 107762,
+        "sha256": "86c1632870e2b3353d5a9cdcc29a3c88956209f18da7b6b0a77b44c861354cd1"
       },
       "name_de": "FileTransfer",
       "short_de": "Fotos & Musik per WLAN rüberziehen",
