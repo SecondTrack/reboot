@@ -301,7 +301,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.matrix",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/matrix",
       "requires": "Matrix-Konto",
       "license": "GPL-3.0",
@@ -316,10 +316,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/matrix.png",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/matrix/releases/download/v0.1.1/de.mesh.matrix_0.1.1_iphoneos-arm.deb",
-        "size": 323088,
-        "sha256": "5215baa3ca4b64198138dce9f207b73a561827399d263a0d6e05f14489f2c23e"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/matrix/releases/download/v0.1.2/de.mesh.matrix_0.1.2_iphoneos-arm.deb",
+        "size": 322966,
+        "sha256": "90ccf63c5a95554b6ccfce240f04fe886bf2fdf843db6790007bdb955c9f901a"
       },
       "short_de": "Chatten über Matrix",
       "category_de": "Kommunikation",
