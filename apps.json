@@ -84,7 +84,7 @@
       ]
     },
     {
-      "id": "batterie",
+      "id": "volt",
       "name": "Volt",
       "short": "Battery monitor with stress test",
       "category": "Tools",
@@ -94,7 +94,7 @@
       ],
       "package": "de.mesh.batt",
       "version": "0.1.2",
-      "repo": "SecondTrack/batterie",
+      "repo": "SecondTrack/volt",
       "requires": "",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -105,11 +105,11 @@
         "Charge cycles and health",
         "Stress test with an honest grade"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/batterie.png?v=a2cba93d",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/volt.png?v=a2cba93d",
       "private": false,
       "release": {
         "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/batterie/releases/download/v0.1.2/de.mesh.batt_0.1.2_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/volt/releases/download/v0.1.2/de.mesh.batt_0.1.2_iphoneos-arm.deb",
         "size": 30742,
         "sha256": "74fced0d104a4c930b2541ffde15231b8ff756940ec1b3193d2037065335a748"
       },
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "id": "dateien",
+      "id": "filetransfer",
       "name": "FileTransfer",
       "short": "Move photos & music over Wi-Fi",
       "category": "Tools",
@@ -134,7 +134,7 @@
       ],
       "package": "de.mesh.files",
       "version": "1.2.3",
-      "repo": "SecondTrack/dateien",
+      "repo": "SecondTrack/filetransfer",
       "requires": "",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -146,11 +146,11 @@
         "Upload and download without a cable",
         "Only reachable on your own Wi-Fi"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/dateien.png?v=7e6305a7",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/filetransfer.png?v=7e6305a7",
       "private": false,
       "release": {
         "version": "1.2.3",
-        "url": "https://github.com/SecondTrack/dateien/releases/download/v1.2.3/de.mesh.files_1.2.3_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/filetransfer/releases/download/v1.2.3/de.mesh.files_1.2.3_iphoneos-arm.deb",
         "size": 107762,
         "sha256": "86c1632870e2b3353d5a9cdcc29a3c88956209f18da7b6b0a77b44c861354cd1"
       },
@@ -166,7 +166,7 @@
       ]
     },
     {
-      "id": "diagnose",
+      "id": "probe",
       "name": "Probe",
       "short": "Device check in seven tests",
       "category": "Tools",
@@ -176,7 +176,7 @@
       ],
       "package": "de.mesh.diag",
       "version": "0.1.2",
-      "repo": "SecondTrack/diagnose",
+      "repo": "SecondTrack/probe",
       "requires": "",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -190,11 +190,11 @@
         "Storage with speed test",
         "Speaker and microphone"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/diagnose.png?v=f9fbc50b",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/probe.png?v=f9fbc50b",
       "private": false,
       "release": {
         "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/diagnose/releases/download/v0.1.2/de.mesh.diag_0.1.2_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/probe/releases/download/v0.1.2/de.mesh.diag_0.1.2_iphoneos-arm.deb",
         "size": 35420,
         "sha256": "f5b5daa5524f1744827051d66f6c31db78a3bac801b21b4ab29266ef628bfb55"
       },
@@ -212,7 +212,7 @@
       ]
     },
     {
-      "id": "helligkeit",
+      "id": "lux",
       "name": "Lux",
       "short": "Brightness with presets",
       "category": "Tools",
@@ -222,7 +222,7 @@
       ],
       "package": "de.mesh.light",
       "version": "0.1.2",
-      "repo": "SecondTrack/helligkeit",
+      "repo": "SecondTrack/lux",
       "requires": "",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -233,11 +233,11 @@
         "Presets for 10, 30, 60 and 100 %",
         "Value stays after locking"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/helligkeit.png?v=a1061c03",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/lux.png?v=a1061c03",
       "private": false,
       "release": {
         "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/helligkeit/releases/download/v0.1.2/de.mesh.light_0.1.2_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/lux/releases/download/v0.1.2/de.mesh.light_0.1.2_iphoneos-arm.deb",
         "size": 17294,
         "sha256": "75c226d3d502e5e029f136a8260dd5ffe9a3af5fa0ca5d2bdb3a070f05f46ce6"
       },
@@ -252,7 +252,7 @@
       ]
     },
     {
-      "id": "matrix",
+      "id": "weave",
       "name": "Weave",
       "short": "Chat over Matrix",
       "category": "Communication",
@@ -262,7 +262,7 @@
       ],
       "package": "de.mesh.matrix",
       "version": "0.1.2",
-      "repo": "SecondTrack/matrix",
+      "repo": "SecondTrack/weave",
       "requires": "Matrix-Konto",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -273,11 +273,11 @@
         "Rooms and direct messages",
         "Send and receive messages in real time"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/matrix.png?v=d3f04a05",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/weave.png?v=d3f04a05",
       "private": false,
       "release": {
         "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/matrix/releases/download/v0.1.2/de.mesh.matrix_0.1.2_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/weave/releases/download/v0.1.2/de.mesh.matrix_0.1.2_iphoneos-arm.deb",
         "size": 322966,
         "sha256": "90ccf63c5a95554b6ccfce240f04fe886bf2fdf843db6790007bdb955c9f901a"
       },
@@ -336,7 +336,7 @@
       ]
     },
     {
-      "id": "musik",
+      "id": "riff",
       "name": "Riff",
       "short": "Music for your Spotify account",
       "category": "Media",
@@ -346,7 +346,7 @@
       ],
       "package": "de.mesh.music",
       "version": "0.2.6",
-      "repo": "SecondTrack/musik",
+      "repo": "SecondTrack/riff",
       "requires": "Spotify-Konto",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -358,11 +358,11 @@
         "Gapless playback thanks to preloading",
         "Control via headphones, Bluetooth and car"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/musik.png?v=257b8d5e",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/riff.png?v=257b8d5e",
       "private": false,
       "release": {
         "version": "0.2.6",
-        "url": "https://github.com/SecondTrack/musik/releases/download/v0.2.6/de.mesh.music_0.2.6_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/riff/releases/download/v0.2.6/de.mesh.music_0.2.6_iphoneos-arm.deb",
         "size": 585428,
         "sha256": "83ff66a392dbf90ee813820b381a566aba598fe5bc7b956a4d374bd3c4703158"
       },
@@ -378,7 +378,7 @@
       ]
     },
     {
-      "id": "tasks",
+      "id": "sweep",
       "name": "Sweep",
       "short": "Free up memory",
       "category": "Tools",
@@ -388,7 +388,7 @@
       ],
       "package": "de.mesh.tasks",
       "version": "0.1.2",
-      "repo": "SecondTrack/tasks",
+      "repo": "SecondTrack/sweep",
       "requires": "",
       "license": "GPL-3.0",
       "install": "GitHub release: latest release, *.deb asset",
@@ -399,11 +399,11 @@
         "Show running apps",
         "Close all with one tap"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tasks.png?v=c01f1e2a",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/sweep.png?v=c01f1e2a",
       "private": false,
       "release": {
         "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/tasks/releases/download/v0.1.2/de.mesh.tasks_0.1.2_iphoneos-arm.deb",
+        "url": "https://github.com/SecondTrack/sweep/releases/download/v0.1.2/de.mesh.tasks_0.1.2_iphoneos-arm.deb",
         "size": 17062,
         "sha256": "acc4e62fd1cba0a13694da50e4e344881c994b046681784461134c2be58157d2"
       },
