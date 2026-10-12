@@ -215,7 +215,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.diag",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/diagnose",
       "requires": "",
       "license": "GPL-3.0",
@@ -233,10 +233,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/diagnose.png",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/diagnose/releases/download/v0.1.1/de.mesh.diag_0.1.1_iphoneos-arm.deb",
-        "size": 35402,
-        "sha256": "be6f8a8809ea391ef538baff888c1e0316e8c1577f44b1de9857d7ff5c1eba5b"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/diagnose/releases/download/v0.1.2/de.mesh.diag_0.1.2_iphoneos-arm.deb",
+        "size": 35420,
+        "sha256": "f5b5daa5524f1744827051d66f6c31db78a3bac801b21b4ab29266ef628bfb55"
       },
       "name_de": "Probe",
       "short_de": "Geräte-Check in sieben Tests",
