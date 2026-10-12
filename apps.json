@@ -261,7 +261,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.light",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/helligkeit",
       "requires": "",
       "license": "GPL-3.0",
@@ -276,10 +276,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/helligkeit.png",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/helligkeit/releases/download/v0.1.1/de.mesh.light_0.1.1_iphoneos-arm.deb",
-        "size": 17276,
-        "sha256": "cc22eb67b2dcbb08dd0293ee71cee28edc4e1b0a8e1aac109cbd45b02e8e78bc"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/helligkeit/releases/download/v0.1.2/de.mesh.light_0.1.2_iphoneos-arm.deb",
+        "size": 17294,
+        "sha256": "75c226d3d502e5e029f136a8260dd5ffe9a3af5fa0ca5d2bdb3a070f05f46ce6"
       },
       "name_de": "Lux",
       "short_de": "Helligkeit mit Presets",
