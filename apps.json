@@ -11,7 +11,7 @@
       "6.1.6"
     ],
     "package": "de.mesh.shop",
-    "version": "0.2.11",
+    "version": "0.2.12",
     "repo": "SecondTrack/reboot",
     "requires": "",
     "license": "GPL-3.0",
@@ -27,10 +27,10 @@
     "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/reboot.png",
     "private": false,
     "release": {
-      "version": "0.2.11",
-      "url": "https://github.com/SecondTrack/reboot/releases/download/v0.2.11/de.mesh.shop_0.2.11_iphoneos-arm.deb",
-      "size": 1959536,
-      "sha256": "83b5af9e3ff9f671fc6b512e7cfe55ec253cdc9e75a77e9c01ed84b621fa31d1"
+      "version": "0.2.12",
+      "url": "https://github.com/SecondTrack/reboot/releases/download/v0.2.12/de.mesh.shop_0.2.12_iphoneos-arm.deb",
+      "size": 1622718,
+      "sha256": "0f2d595bb2db7514bd91e88f743dab21698e37265a21889cbf4da7ef6f528a48"
     },
     "name_de": "Reboot Appstore",
     "short_de": "Der App Store auf deinem iPod",
