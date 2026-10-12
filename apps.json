@@ -54,7 +54,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.g2048",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "repo": "SecondTrack/2048",
       "requires": "",
       "license": "GPL-3.0",
@@ -69,10 +69,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/2048.png?v=72bf7758",
       "private": false,
       "release": {
-        "version": "0.1.1",
-        "url": "https://github.com/SecondTrack/2048/releases/download/v0.1.1/de.mesh.g2048_0.1.1_iphoneos-arm.deb",
-        "size": 17280,
-        "sha256": "a5b55ebb6b60ece8d4de155c504b8325be95a582928bda8759ae956dc4d1b58d"
+        "version": "0.1.2",
+        "url": "https://github.com/SecondTrack/2048/releases/download/v0.1.2/de.mesh.g2048_0.1.2_iphoneos-arm.deb",
+        "size": 18014,
+        "sha256": "fcde9e322ca1026fc940769373cb7c6c45edcb2bf69e2a3d36e86151d4e08cec"
       },
       "short_de": "Das Zahlen-Puzzle",
       "category_de": "Spiele",
