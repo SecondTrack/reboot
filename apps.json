@@ -427,7 +427,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.ytube",
-      "version": "0.2.3",
+      "version": "0.2.4",
       "repo": "SecondTrack/tube",
       "requires": "",
       "license": "GPL-3.0",
@@ -444,10 +444,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tube.png?v=abc87b5c",
       "private": false,
       "release": {
-        "version": "0.2.3",
-        "url": "https://github.com/SecondTrack/tube/releases/download/v0.2.3/de.mesh.ytube_0.2.3_iphoneos-arm.deb",
-        "size": 337552,
-        "sha256": "715a8328253afa5fd59779f26e097358b08366bdb1f57374e02a079ad72ae827"
+        "version": "0.2.4",
+        "url": "https://github.com/SecondTrack/tube/releases/download/v0.2.4/de.mesh.ytube_0.2.4_iphoneos-arm.deb",
+        "size": 338486,
+        "sha256": "4d15d22d519635afbcdfc585e2e53c597c0b3a5487ebcc91fcc012ef1a938268"
       },
       "short_de": "Videos suchen und schauen",
       "category_de": "Medien",
