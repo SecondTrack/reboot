@@ -173,7 +173,7 @@
         "6.1.6"
       ],
       "package": "de.mesh.files",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "repo": "SecondTrack/dateien",
       "requires": "",
       "license": "GPL-3.0",
@@ -189,10 +189,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/dateien.png",
       "private": false,
       "release": {
-        "version": "1.2.1",
-        "url": "https://github.com/SecondTrack/dateien/releases/download/v1.2.1/de.mesh.files_1.2.1_iphoneos-arm.deb",
-        "size": 107712,
-        "sha256": "1453651d5a67ba81b20f95aca59ff82bfea56b6c54fd35d166b7718c5f6984c2"
+        "version": "1.2.2",
+        "url": "https://github.com/SecondTrack/dateien/releases/download/v1.2.2/de.mesh.files_1.2.2_iphoneos-arm.deb",
+        "size": 107752,
+        "sha256": "c26859b530d542694c0f9eeaa82e042b3bf07e50e6e835268bd60994a0ae4122"
       },
       "name_de": "Beam",
       "short_de": "Fotos & Musik per WLAN rüberziehen",
