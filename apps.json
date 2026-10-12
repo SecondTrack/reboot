@@ -8,7 +8,7 @@
     "category": "Store",
     "status": "beta",
     "ios": [
-      "6.1.6"
+      "5.0 – 6.1"
     ],
     "package": "de.mesh.shop",
     "version": "0.2.15",
@@ -51,7 +51,7 @@
       "category": "Games",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.g2048",
       "version": "0.1.1",
@@ -90,7 +90,7 @@
       "category": "Tools",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.batt",
       "version": "0.1.2",
@@ -130,7 +130,7 @@
       "category": "Tools",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.files",
       "version": "1.2.3",
@@ -172,7 +172,7 @@
       "category": "Tools",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.diag",
       "version": "0.1.2",
@@ -218,7 +218,7 @@
       "category": "Tools",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.light",
       "version": "0.1.2",
@@ -258,7 +258,7 @@
       "category": "Communication",
       "status": "beta",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.matrix",
       "version": "0.1.2",
@@ -298,8 +298,7 @@
       "category": "Communication",
       "status": "beta",
       "ios": [
-        "5.1.1",
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.ios",
       "version": "0.1.6",
@@ -342,10 +341,10 @@
       "category": "Media",
       "status": "beta",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.music",
-      "version": "0.2.6",
+      "version": "0.2.7",
       "repo": "SecondTrack/riff",
       "requires": "Spotify-Konto",
       "license": "GPL-3.0",
@@ -361,10 +360,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/riff.png?v=257b8d5e",
       "private": false,
       "release": {
-        "version": "0.2.6",
-        "url": "https://github.com/SecondTrack/riff/releases/download/v0.2.6/de.mesh.music_0.2.6_iphoneos-arm.deb",
-        "size": 585428,
-        "sha256": "83ff66a392dbf90ee813820b381a566aba598fe5bc7b956a4d374bd3c4703158"
+        "version": "0.2.7",
+        "url": "https://github.com/SecondTrack/riff/releases/download/v0.2.7/de.mesh.music_0.2.7_iphoneos-arm.deb",
+        "size": 586188,
+        "sha256": "c593e7a10ad849785c9aa5fe4e71f5922983fd5238b1551ad3d2e077cb741844"
       },
       "name_de": "Riff",
       "short_de": "Musik für dein Spotify-Konto",
@@ -384,7 +383,7 @@
       "category": "Tools",
       "status": "da",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.tasks",
       "version": "0.1.2",
@@ -424,7 +423,7 @@
       "category": "Media",
       "status": "beta",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.ytube",
       "version": "0.2.4",
