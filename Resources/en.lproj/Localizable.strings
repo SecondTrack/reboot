@@ -55,3 +55,32 @@
 "Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed." = "Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed.";
 "Source code on GitHub" = "Source code on GitHub";
 "Not affiliated with Apple. iPod is a trademark of Apple Inc." = "Not affiliated with Apple. iPod is a trademark of Apple Inc.";
+
+/* Store-Meldungen */
+"The install helper has no root rights. Please reinstall Reboot once." = "The install helper has no root rights. Please reinstall Reboot once.";
+"Package file rejected." = "Package file rejected.";
+"This is not a Reboot app – installation refused." = "This is not a Reboot app – installation refused.";
+"dpkg reported an error during installation." = "dpkg reported an error during installation.";
+"Install helper missing or crashed (%d)." = "Install helper missing or crashed (%d).";
+"There is no package for this app yet." = "There is no package for this app yet.";
+"Downloading …" = "Downloading …";
+"Download failed (HTTP %d from %@)" = "Download failed (HTTP %d from %@)";
+"Download incomplete – please try again." = "Download incomplete – please try again.";
+"Checking …" = "Checking …";
+"Checksum mismatch – package discarded." = "Checksum mismatch – package discarded.";
+"Not enough space to save." = "Not enough space to save.";
+"Installing …" = "Installing …";
+"Removing …" = "Removing …";
+"Invalid address" = "Invalid address";
+"Server not reachable" = "Server not reachable";
+"Certificate list missing" = "Certificate list missing";
+"TLS error" = "TLS error";
+"Invalid certificate – connection blocked.\n%s" = "Invalid certificate – connection blocked.\n%s";
+"Secure connection failed (%s)" = "Secure connection failed (%s)";
+"Sending failed" = "Sending failed";
+"Response too large" = "Response too large";
+"Only http/https is supported" = "Only http/https is supported";
+"No response" = "No response";
+"Invalid response" = "Invalid response";
+"Invalid redirect" = "Invalid redirect";
+"Too many redirects" = "Too many redirects";

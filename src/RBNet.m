@@ -1,4 +1,5 @@
 #import "RBNet.h"
+#import "MeshL10n.h"
 #import "mbedtls/ssl.h"
 #import "mbedtls/net_sockets.h"
 #import "mbedtls/ctr_drbg.h"
@@ -72,7 +73,7 @@ static NSData *dechunk(NSData *d) {
 static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
     BOOL tls = [url.scheme.lowercaseString isEqualToString:@"https"];
     NSString *host = url.host;
-    if (!host.length) { *err = @"Ungültige Adresse"; return nil; }
+    if (!host.length) { *err = L(@"Invalid address"); return nil; }
     NSString *port = url.port ? url.port.stringValue : (tls ? @"443" : @"80");
     NSString *path = url.path.length ? CFBridgingRelease(CFURLCopyPath((__bridge CFURLRef)url)) : @"/";
     if (!path.length) path = @"/";
@@ -91,21 +92,21 @@ static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
     NSMutableData *resp = nil; int rc;
 
     if ((rc = mbedtls_net_connect(&net, host.UTF8String, port.UTF8String, MBEDTLS_NET_PROTO_TCP)) != 0) {
-        *err = @"Server nicht erreichbar"; goto done;
+        *err = L(@"Server not reachable"); goto done;
     }
     if (tls) {
         mbedtls_x509_crt *ca = caChain();
-        if (!ca) { *err = @"Zertifikatsliste fehlt"; goto done; }
+        if (!ca) { *err = L(@"Certificate list missing"); goto done; }
         if (mbedtls_ctr_drbg_seed(&drbg, rbEntropy, NULL, (const unsigned char *)"rebootst", 6) != 0 ||
             mbedtls_ssl_config_defaults(&conf, MBEDTLS_SSL_IS_CLIENT, MBEDTLS_SSL_TRANSPORT_STREAM, MBEDTLS_SSL_PRESET_DEFAULT) != 0) {
-            *err = @"TLS-Fehler"; goto done;
+            *err = L(@"TLS error"); goto done;
         }
         mbedtls_ssl_conf_authmode(&conf, MBEDTLS_SSL_VERIFY_REQUIRED);     // Zertifikat MUSS gültig sein
         mbedtls_ssl_conf_ca_chain(&conf, ca, NULL);
         mbedtls_ssl_conf_rng(&conf, mbedtls_ctr_drbg_random, &drbg);
         mbedtls_ssl_conf_read_timeout(&conf, READ_TIMEOUT_MS);
         if (mbedtls_ssl_setup(&ssl, &conf) != 0 || mbedtls_ssl_set_hostname(&ssl, host.UTF8String) != 0) {
-            *err = @"TLS-Fehler"; goto done;
+            *err = L(@"TLS error"); goto done;
         }
         mbedtls_ssl_set_bio(&ssl, &net, mbedtls_net_send, mbedtls_net_recv, mbedtls_net_recv_timeout);
         while ((rc = mbedtls_ssl_handshake(&ssl)) != 0) {
@@ -113,10 +114,10 @@ static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
             uint32_t flags = mbedtls_ssl_get_verify_result(&ssl);
             if (flags && flags != (uint32_t)-1) {
                 char info[256]; mbedtls_x509_crt_verify_info(info, sizeof info, "", flags);
-                *err = [NSString stringWithFormat:@"Zertifikat ungültig – Verbindung blockiert.\n%s", info];
+                *err = LF(@"Invalid certificate – connection blocked.\n%s", info);
             } else {
                 char e[128]; mbedtls_strerror(rc, e, sizeof e);
-                *err = [NSString stringWithFormat:@"Sichere Verbindung fehlgeschlagen (%s)", e];
+                *err = LF(@"Secure connection failed (%s)", e);
             }
             goto done;
         }
@@ -124,14 +125,14 @@ static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
         while (wo < wl) {
             int w = mbedtls_ssl_write(&ssl, wp + wo, wl - wo);
             if (w == MBEDTLS_ERR_SSL_WANT_READ || w == MBEDTLS_ERR_SSL_WANT_WRITE) continue;
-            if (w <= 0) { *err = @"Senden fehlgeschlagen"; goto done; }
+            if (w <= 0) { *err = L(@"Sending failed"); goto done; }
             wo += (size_t)w;
         }
     } else {
         const unsigned char *wp = reqData.bytes; size_t wl = reqData.length, wo = 0;
         while (wo < wl) {
             int w = mbedtls_net_send(&net, wp + wo, wl - wo);
-            if (w <= 0) { *err = @"Senden fehlgeschlagen"; goto done; }
+            if (w <= 0) { *err = L(@"Sending failed"); goto done; }
             wo += (size_t)w;
         }
     }
@@ -148,7 +149,7 @@ static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
 #endif
             if (r <= 0) break;
             [resp appendBytes:buf length:(NSUInteger)r];
-            if (resp.length > maxBytes + 65536) { *err = @"Seite zu groß"; resp = nil; break; }
+            if (resp.length > maxBytes + 65536) { *err = L(@"Response too large"); resp = nil; break; }
         }
     }
 done:
@@ -164,15 +165,15 @@ done:
     BOOL allSecure = YES;
     for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
         NSString *scheme = url.scheme.lowercaseString;
-        if (![scheme isEqualToString:@"https"] && ![scheme isEqualToString:@"http"]) { res.error = @"Nur http/https wird unterstützt"; return res; }
+        if (![scheme isEqualToString:@"https"] && ![scheme isEqualToString:@"http"]) { res.error = L(@"Only http/https is supported"); return res; }
         if (![scheme isEqualToString:@"https"]) allSecure = NO;
         NSString *err = nil;
         NSData *raw = rawRequest(url, maxBytes, &err);
         res.url = url;
-        if (!raw) { res.error = err ?: @"Keine Antwort"; return res; }
+        if (!raw) { res.error = err ?: L(@"No response"); return res; }
 
         NSRange sep = [raw rangeOfData:[@"\r\n\r\n" dataUsingEncoding:NSASCIIStringEncoding] options:0 range:NSMakeRange(0, raw.length)];
-        if (sep.location == NSNotFound) { res.error = @"Ungültige Antwort"; return res; }
+        if (sep.location == NSNotFound) { res.error = L(@"Invalid response"); return res; }
         NSString *head = [[NSString alloc] initWithData:[raw subdataWithRange:NSMakeRange(0, sep.location)] encoding:NSISOLatin1StringEncoding];
         NSData *body = [raw subdataWithRange:NSMakeRange(sep.location + 4, raw.length - sep.location - 4)];
         NSArray *lines = [head componentsSeparatedByString:@"\r\n"];
@@ -190,7 +191,7 @@ done:
         }
         if (status >= 300 && status < 400 && location.length) {
             NSURL *next = RBAbsURL(location, url);
-            if (!next) { res.error = @"Ungültige Weiterleitung"; return res; }
+            if (!next) { res.error = L(@"Invalid redirect"); return res; }
             url = next; continue;
         }
         res.status = status; res.contentType = ctype;
@@ -199,7 +200,7 @@ done:
         res.secure = allSecure;
         return res;
     }
-    res.error = @"Zu viele Weiterleitungen";
+    res.error = L(@"Too many redirects");
     return res;
 }
 

@@ -55,3 +55,32 @@
 "Safe installs: apps come only over encrypted connections with verified certificates, and every package is checked against its SHA-256 checksum before it is installed." = "Sicher installiert: Apps kommen nur über verschlüsselte Verbindungen mit geprüften Zertifikaten, und jedes Paket wird vor der Installation gegen seine SHA-256-Prüfsumme geprüft.";
 "Source code on GitHub" = "Quellcode auf GitHub";
 "Not affiliated with Apple. iPod is a trademark of Apple Inc." = "Nicht mit Apple verbunden. iPod ist eine Marke von Apple Inc.";
+
+/* Store-Meldungen */
+"The install helper has no root rights. Please reinstall Reboot once." = "Der Installations-Helfer hat keine Root-Rechte. Reboot bitte einmal neu installieren.";
+"Package file rejected." = "Paketdatei abgelehnt.";
+"This is not a Reboot app – installation refused." = "Das ist keine Reboot-App – Installation abgelehnt.";
+"dpkg reported an error during installation." = "dpkg meldet einen Fehler bei der Installation.";
+"Install helper missing or crashed (%d)." = "Installations-Helfer fehlt oder ist abgestürzt (%d).";
+"There is no package for this app yet." = "Für diese App gibt es noch kein Paket.";
+"Downloading …" = "Lädt herunter …";
+"Download failed (HTTP %d from %@)" = "Download fehlgeschlagen (HTTP %d bei %@)";
+"Download incomplete – please try again." = "Download unvollständig – bitte nochmal.";
+"Checking …" = "Prüft …";
+"Checksum mismatch – package discarded." = "Prüfsumme stimmt nicht – Paket verworfen.";
+"Not enough space to save." = "Kein Platz zum Speichern.";
+"Installing …" = "Installiere …";
+"Removing …" = "Entferne …";
+"Invalid address" = "Ungültige Adresse";
+"Server not reachable" = "Server nicht erreichbar";
+"Certificate list missing" = "Zertifikatsliste fehlt";
+"TLS error" = "TLS-Fehler";
+"Invalid certificate – connection blocked.\n%s" = "Zertifikat ungültig – Verbindung blockiert.\n%s";
+"Secure connection failed (%s)" = "Sichere Verbindung fehlgeschlagen (%s)";
+"Sending failed" = "Senden fehlgeschlagen";
+"Response too large" = "Antwort zu groß";
+"Only http/https is supported" = "Nur http/https wird unterstützt";
+"No response" = "Keine Antwort";
+"Invalid response" = "Ungültige Antwort";
+"Invalid redirect" = "Ungültige Weiterleitung";
+"Too many redirects" = "Zu viele Weiterleitungen";

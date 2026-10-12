@@ -1,5 +1,6 @@
 #import "RBStore.h"
 #import "RBNet.h"
+#import "MeshL10n.h"
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <spawn.h>
@@ -172,15 +173,15 @@ static int helper(NSArray*args){
 }
 static NSString* helperError(int rc){
     switch(rc){ case 0: return nil;
-        case 3: return @"Der Installations-Helfer hat keine Root-Rechte. Reboot bitte einmal neu installieren.";
-        case 4: return @"Paketdatei abgelehnt.";
-        case 5: return @"Das ist keine Reboot-App – Installation abgelehnt.";
-        case 6: return @"dpkg meldet einen Fehler bei der Installation.";
-        default: return [NSString stringWithFormat:@"Installations-Helfer fehlt oder ist abgestürzt (%d).",rc]; }
+        case 3: return L(@"The install helper has no root rights. Please reinstall Reboot once.");
+        case 4: return L(@"Package file rejected.");
+        case 5: return L(@"This is not a Reboot app – installation refused.");
+        case 6: return L(@"dpkg reported an error during installation.");
+        default: return LF(@"Install helper missing or crashed (%d).",rc); }
 }
 
 - (void)install:(RBApp *)app progress:(void(^)(NSString *))progress done:(void(^)(NSString *))done {
-    if(!app.debURL.length){ done(@"Für diese App gibt es noch kein Paket."); return; }
+    if(!app.debURL.length){ done(L(@"There is no package for this app yet.")); return; }
     app.busy=YES; NSString*url=app.debURL, *sha=app.sha256, *ver=app.releaseVersion, *pkg=app.package; long long size=app.debSize;
     // iOS soll den Store während Download/Installation nicht einfrieren (Gnadenfrist ~10 min)
     __block UIBackgroundTaskIdentifier bg=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{ [[UIApplication sharedApplication] endBackgroundTask:bg]; bg=UIBackgroundTaskInvalid; }];
@@ -188,22 +189,22 @@ static NSString* helperError(int rc){
     void (^finish)(NSString*)=^(NSString*e){ dispatch_async(dispatch_get_main_queue(), ^{ app.busy=NO; app.busyText=nil; [self reloadInstalled]; done(e);
         if(bg!=UIBackgroundTaskInvalid){ [[UIApplication sharedApplication] endBackgroundTask:bg]; bg=UIBackgroundTaskInvalid; } }); };
     dispatch_async(_q, ^{ @autoreleasepool {
-        say(@"Lädt …");
+        say(L(@"Downloading …"));
         RBResponse*r=[RBNet fetch:[NSURL URLWithString:url] maxBytes:(NSUInteger)MAX(size,1)+1024];
-        if(r.error || r.status!=200 || !r.body.length){ finish(r.error?:[NSString stringWithFormat:@"Download fehlgeschlagen (HTTP %d bei %@)",r.status,r.url.host?:@"?"]); return; }
-        if(size>0 && (long long)r.body.length!=size){ finish(@"Download unvollständig – bitte nochmal."); return; }
-        say(@"Prüft …");
-        if(sha.length && ![sha256Hex(r.body) isEqualToString:sha.lowercaseString]){ finish(@"Prüfsumme stimmt nicht – Paket verworfen."); return; }
+        if(r.error || r.status!=200 || !r.body.length){ finish(r.error?:LF(@"Download failed (HTTP %d from %@)",r.status,r.url.host?:@"?")); return; }
+        if(size>0 && (long long)r.body.length!=size){ finish(L(@"Download incomplete – please try again.")); return; }
+        say(L(@"Checking …"));
+        if(sha.length && ![sha256Hex(r.body) isEqualToString:sha.lowercaseString]){ finish(L(@"Checksum mismatch – package discarded.")); return; }
         NSString*file=[DLDIR stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@.deb",pkg,ver]];
-        if(![r.body writeToFile:file atomically:YES]){ finish(@"Kein Platz zum Speichern."); return; }
-        say(@"Installiert …");
+        if(![r.body writeToFile:file atomically:YES]){ finish(L(@"Not enough space to save.")); return; }
+        say(L(@"Installing …"));
         int rc=helper(@[@"install",file]);
         [[NSFileManager defaultManager] removeItemAtPath:file error:NULL];
         finish(helperError(rc));
     }});
 }
 - (void)remove:(RBApp *)app done:(void(^)(NSString *))done {
-    app.busy=YES; app.busyText=@"Entfernt …"; NSString*pkg=app.package;
+    app.busy=YES; app.busyText=L(@"Removing …"); NSString*pkg=app.package;
     dispatch_async(_q, ^{
         int rc=helper(@[@"remove",pkg]);
         dispatch_async(dispatch_get_main_queue(), ^{ app.busy=NO; app.busyText=nil; [self reloadInstalled]; done(helperError(rc)); });
@@ -213,7 +214,8 @@ static NSString* helperError(int rc){
 #pragma mark - Icons
 
 - (void)icon:(RBApp *)app done:(void(^)(NSData *))done {
-    NSString*p=[[DIR stringByAppendingPathComponent:@"icons"] stringByAppendingPathComponent:[app.ident stringByAppendingString:@".png"]];
+    // Dateiname hängt an der Icon-Adresse (Katalog setzt ?v=<Prüfsumme>) -> neues Icon wird neu geladen statt ewig das alte
+    NSString*p=[[DIR stringByAppendingPathComponent:@"icons"] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%lx.png",app.ident,(unsigned long)app.iconURL.hash]];
     NSData*d=[NSData dataWithContentsOfFile:p]; if(d.length){ done(d); return; }
     if(!app.iconURL.length){ done(nil); return; }
     dispatch_async(dispatch_get_global_queue(0,0), ^{

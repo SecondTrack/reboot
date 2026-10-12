@@ -24,7 +24,7 @@
       "Install and update with one tap",
       "Open installed apps"
     ],
-    "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/reboot.png",
+    "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/reboot.png?v=1d4c2877",
     "private": false,
     "release": {
       "version": "0.2.13",
@@ -66,7 +66,7 @@
         "Best score is saved",
         "Completely offline"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/2048.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/2048.png?v=72bf7758",
       "private": false,
       "release": {
         "version": "0.1.1",
@@ -105,7 +105,7 @@
         "Charge cycles and health",
         "Stress test with an honest grade"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/batterie.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/batterie.png?v=a2cba93d",
       "private": false,
       "release": {
         "version": "0.1.2",
@@ -124,48 +124,8 @@
       ]
     },
     {
-      "id": "browser",
-      "name": "Lumen",
-      "short": "Read today's websites again",
-      "category": "Media",
-      "status": "da",
-      "ios": [
-        "6.1.6"
-      ],
-      "package": "de.mesh.browser",
-      "version": "0.1.2",
-      "repo": "SecondTrack/browser",
-      "requires": "",
-      "license": "GPL-3.0",
-      "install": "GitHub release: latest release, *.deb asset",
-      "bundle": "de.mesh.browser",
-      "text": "Safe reader mode with modern encryption and certificate checks – no JavaScript, no trackers. Pages that the old Safari can no longer open work again.",
-      "features": [
-        "Modern encryption with certificate checks",
-        "Reader mode without JavaScript or trackers",
-        "Search via DuckDuckGo"
-      ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/browser.png",
-      "private": false,
-      "release": {
-        "version": "0.1.2",
-        "url": "https://github.com/SecondTrack/browser/releases/download/v0.1.2/de.mesh.browser_0.1.2_iphoneos-arm.deb",
-        "size": 469574,
-        "sha256": "727711b548686bd071ebb8b7dff459137ef90438f4e4f43be104a3a4ca94e29f"
-      },
-      "short_de": "Heutige Webseiten wieder lesen",
-      "category_de": "Medien",
-      "text_de": "Sicherer Lesemodus mit moderner Verschlüsselung und Zertifikatsprüfung – ohne JavaScript, ohne Tracker. Damit gehen Seiten wieder auf, an denen der alte Safari scheitert.",
-      "features_de": [
-        "Moderne Verschlüsselung mit Zertifikatsprüfung",
-        "Lesemodus ohne JavaScript und Tracker",
-        "Suche über DuckDuckGo"
-      ],
-      "name_de": "Lumen"
-    },
-    {
       "id": "dateien",
-      "name": "Beam",
+      "name": "FileTransfer",
       "short": "Move photos & music over Wi-Fi",
       "category": "Tools",
       "status": "da",
@@ -186,7 +146,7 @@
         "Upload and download without a cable",
         "Only reachable on your own Wi-Fi"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/dateien.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/dateien.png?v=7e6305a7",
       "private": false,
       "release": {
         "version": "1.2.2",
@@ -194,7 +154,7 @@
         "size": 107752,
         "sha256": "c26859b530d542694c0f9eeaa82e042b3bf07e50e6e835268bd60994a0ae4122"
       },
-      "name_de": "Beam",
+      "name_de": "FileTransfer",
       "short_de": "Fotos & Musik per WLAN rüberziehen",
       "category_de": "Werkzeuge",
       "text_de": "Sieh dir Fotos, Musik und Dateien des iPods auf Handy oder Computer an – ohne Kabel, einfach im Browser. QR-Code scannen, fertig.",
@@ -230,7 +190,7 @@
         "Storage with speed test",
         "Speaker and microphone"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/diagnose.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/diagnose.png?v=f9fbc50b",
       "private": false,
       "release": {
         "version": "0.1.2",
@@ -273,7 +233,7 @@
         "Presets for 10, 30, 60 and 100 %",
         "Value stays after locking"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/helligkeit.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/helligkeit.png?v=a1061c03",
       "private": false,
       "release": {
         "version": "0.1.2",
@@ -313,7 +273,7 @@
         "Rooms and direct messages",
         "Send and receive messages in real time"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/matrix.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/matrix.png?v=d3f04a05",
       "private": false,
       "release": {
         "version": "0.1.2",
@@ -356,7 +316,7 @@
         "Runs over Tor – no central server",
         "PIN lock"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/mesh.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/mesh.png?v=39332b3d",
       "private": false,
       "release": {
         "version": "0.1.1",
@@ -398,7 +358,7 @@
         "Gapless playback thanks to preloading",
         "Control via headphones, Bluetooth and car"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/musik.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/musik.png?v=d410320b",
       "private": false,
       "release": {
         "version": "0.2.4",
@@ -439,7 +399,7 @@
         "Show running apps",
         "Close all with one tap"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tasks.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tasks.png?v=c01f1e2a",
       "private": false,
       "release": {
         "version": "0.1.2",
@@ -481,7 +441,7 @@
         "Mini player and double-tap to skip",
         "Read comments"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tube.png",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/tube.png?v=42222443",
       "private": false,
       "release": {
         "version": "0.2.3",
