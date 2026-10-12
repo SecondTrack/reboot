@@ -51,7 +51,7 @@ static void setIcon(UIImageView*iv, RBApp*a){
     NSString*k=localKey(a); NSString*p=k?[[NSBundle mainBundle] pathForResource:k ofType:@"png" inDirectory:@"ic"]:nil;
     if(p){ iv.image=[UIImage imageWithContentsOfFile:p]; return; }
     iv.image=nil; objc_setAssociatedObject(iv,"id",a.ident,OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [[RBStore shared] icon:a done:^(NSData*png){ if(png && [objc_getAssociatedObject(iv,"id") isEqualToString:a.ident]) iv.image=[UIImage imageWithData:png scale:2]; }];
+    [[RBStore shared] icon:a done:^(NSData*png){ if(png && [objc_getAssociatedObject(iv,"id") isEqualToString:a.ident]) iv.image=[UIImage imageWithCGImage:[UIImage imageWithData:png].CGImage scale:2 orientation:UIImageOrientationUp]; }];
 }
 
 // ---- Vorschau-/Screenshot-Kachel (mitgelieferte Bilder, sonst Platzhalter) ----

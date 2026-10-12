@@ -1,6 +1,6 @@
 # Reboot — App-Store für alte iPods (iOS 6.1, ARMv7), Theos.
 # Katalog + Pakete kommen von github.com/SecondTrack; installiert wird über den setuid-Helfer rbhelper.
-TARGET = iphone:clang:7.1:6.0
+TARGET = iphone:clang:7.1:5.0
 ARCHS  = armv7
 
 include $(THEOS)/makefiles/common.mk

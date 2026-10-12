@@ -1,6 +1,6 @@
 # Reboot App Store
 
-**An app store for jailbroken iPods on iOS 6 – installs and updates apps straight from GitHub.**
+**An app store for jailbroken iPods on iOS 5 and 6 – installs and updates apps straight from GitHub.**
 
 Cydia still works on an iPod touch 4, but most of its repos are dead and nothing new shows up there. Reboot is a small store for the apps in this organization: open it, tap *Install*, and the app appears on the home screen a few seconds later. Updates show up as soon as a new release is published here.
 
