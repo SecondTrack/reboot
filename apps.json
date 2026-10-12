@@ -85,7 +85,7 @@
     },
     {
       "id": "batterie",
-      "name": "Battery",
+      "name": "Volt",
       "short": "Battery monitor with stress test",
       "category": "Tools",
       "status": "da",
@@ -113,7 +113,7 @@
         "size": 30728,
         "sha256": "9a21c9cd2bb13538afb0d6d19d90f5ead9bc864a6560aa5ed849fe0647cece11"
       },
-      "name_de": "Batterie",
+      "name_de": "Volt",
       "short_de": "Akku-Monitor mit Belastungstest",
       "category_de": "Werkzeuge",
       "text_de": "Ladestand, Spannung, Strom, Temperatur, Ladezyklen und Gesundheit in Echtzeit. Der Belastungstest misst die Kapazität, die wirklich drin ist, und gibt eine ehrliche Note.",
@@ -125,7 +125,7 @@
     },
     {
       "id": "browser",
-      "name": "Browser",
+      "name": "Lumen",
       "short": "Read today's websites again",
       "category": "Media",
       "status": "da",
@@ -160,11 +160,12 @@
         "Moderne Verschlüsselung mit Zertifikatsprüfung",
         "Lesemodus ohne JavaScript und Tracker",
         "Suche über DuckDuckGo"
-      ]
+      ],
+      "name_de": "Lumen"
     },
     {
       "id": "dateien",
-      "name": "Files",
+      "name": "Beam",
       "short": "Move photos & music over Wi-Fi",
       "category": "Tools",
       "status": "da",
@@ -193,7 +194,7 @@
         "size": 107712,
         "sha256": "1453651d5a67ba81b20f95aca59ff82bfea56b6c54fd35d166b7718c5f6984c2"
       },
-      "name_de": "Dateien",
+      "name_de": "Beam",
       "short_de": "Fotos & Musik per WLAN rüberziehen",
       "category_de": "Werkzeuge",
       "text_de": "Sieh dir Fotos, Musik und Dateien des iPods auf Handy oder Computer an – ohne Kabel, einfach im Browser. QR-Code scannen, fertig.",
@@ -206,7 +207,7 @@
     },
     {
       "id": "diagnose",
-      "name": "Diagnostics",
+      "name": "Probe",
       "short": "Device check in seven tests",
       "category": "Tools",
       "status": "da",
@@ -237,7 +238,7 @@
         "size": 35402,
         "sha256": "be6f8a8809ea391ef538baff888c1e0316e8c1577f44b1de9857d7ff5c1eba5b"
       },
-      "name_de": "Diagnose",
+      "name_de": "Probe",
       "short_de": "Geräte-Check in sieben Tests",
       "category_de": "Werkzeuge",
       "text_de": "Display und Pixel, Touchscreen, Sensoren mit Wasserwaage, CPU & RAM, Speicher mit Speed-Test, Lautsprecher und Mikrofon. Ideal vor dem Kauf oder Verkauf.",
@@ -252,7 +253,7 @@
     },
     {
       "id": "helligkeit",
-      "name": "Brightness",
+      "name": "Lux",
       "short": "Brightness with presets",
       "category": "Tools",
       "status": "da",
@@ -280,7 +281,7 @@
         "size": 17276,
         "sha256": "cc22eb67b2dcbb08dd0293ee71cee28edc4e1b0a8e1aac109cbd45b02e8e78bc"
       },
-      "name_de": "Helligkeit",
+      "name_de": "Lux",
       "short_de": "Helligkeit mit Presets",
       "category_de": "Werkzeuge",
       "text_de": "Großer Regler plus Presets für 10, 30, 60 und 100 %. Der Wert bleibt auch nach dem Sperren.",
@@ -292,7 +293,7 @@
     },
     {
       "id": "matrix",
-      "name": "Matrix",
+      "name": "Weave",
       "short": "Chat over Matrix",
       "category": "Communication",
       "status": "beta",
@@ -327,7 +328,8 @@
         "Anmelden bei matrix.org oder eigenem Server",
         "Räume und Direktnachrichten",
         "Nachrichten senden und empfangen in Echtzeit"
-      ]
+      ],
+      "name_de": "Weave"
     },
     {
       "id": "mesh",
@@ -375,8 +377,8 @@
     },
     {
       "id": "musik",
-      "name": "Music",
-      "short": "Your Spotify playlists on the iPod",
+      "name": "Riff",
+      "short": "Music for your Spotify account",
       "category": "Media",
       "status": "beta",
       "ios": [
@@ -404,8 +406,8 @@
         "size": 592870,
         "sha256": "e3f52f5752bd9ba1b695fbef4b2e97654571e51a28650b2944aca75b5ec02d71"
       },
-      "name_de": "Musik",
-      "short_de": "Deine Spotify-Playlists auf dem iPod",
+      "name_de": "Riff",
+      "short_de": "Musik für dein Spotify-Konto",
       "category_de": "Medien",
       "text_de": "Suche, Bibliothek, Playlists und Wiedergabe mit nahtlosem Übergang dank Vorladen. Playlists lassen sich für unterwegs offline speichern, Lenkrad- und Bluetooth-Tasten im Auto funktionieren.",
       "features_de": [
@@ -417,7 +419,7 @@
     },
     {
       "id": "tasks",
-      "name": "Tasks",
+      "name": "Sweep",
       "short": "Free up memory",
       "category": "Tools",
       "status": "da",
@@ -452,7 +454,8 @@
         "Freier Arbeitsspeicher auf einen Blick",
         "Laufende Apps anzeigen",
         "Alle mit einem Tipp schließen"
-      ]
+      ],
+      "name_de": "Sweep"
     },
     {
       "id": "tube",
@@ -494,7 +497,8 @@
         "Videos in 360p",
         "Nur Ton – auch im Hintergrund",
         "Kommentare lesen"
-      ]
+      ],
+      "name_de": "Tube"
     }
   ],
   "hinweis": "Der Reboot Appstore liest diese Datei. Pro App: neuestes GitHub-Release, Anhang *.deb (SHA-256 aus der GitHub-API wird geprüft)."
