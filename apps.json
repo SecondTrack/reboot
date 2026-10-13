@@ -458,6 +458,26 @@
         "Kommentare lesen"
       ],
       "name_de": "Tube"
+    },
+    {
+      "id": "security",
+      "name": "Mesh Security",
+      "short": "Shield for jailbroken iPods: random password instead of alpine, all incoming ports closed, only the apps you allow go online, every connection logged.",
+      "category": "",
+      "status": "beta",
+      "ios": [
+        "6.1.6"
+      ],
+      "package": "de.mesh.security",
+      "version": "0.6.0",
+      "repo": "SecondTrack/security",
+      "requires": "",
+      "license": "GPL-3.0",
+      "bundle": "de.mesh.security",
+      "text": "Shield for jailbroken iPods: random password instead of alpine, all incoming ports closed, only the apps you allow go online, every connection logged.",
+      "features": [],
+      "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png",
+      "private": false
     }
   ],
   "hinweis": "Der Reboot Appstore liest diese Datei. Pro App: neuestes GitHub-Release, Anhang *.deb (SHA-256 aus der GitHub-API wird geprüft)."
