@@ -84,3 +84,4 @@
 "Invalid response" = "Ungültige Antwort";
 "Invalid redirect" = "Ungültige Weiterleitung";
 "Too many redirects" = "Zu viele Weiterleitungen";
+"Downloading … %d %%" = "Lädt herunter … %d %%";

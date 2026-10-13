@@ -1,6 +1,6 @@
 Package: de.mesh.shop
 Name: Reboot
-Version: 0.2.17
+Version: 0.2.20
 Architecture: iphoneos-arm
 Description: Reboot – der App Store für alte iPods. Lädt, installiert und aktualisiert Apps von github.com/SecondTrack.
 Maintainer: Second Track

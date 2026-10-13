@@ -70,7 +70,7 @@ static NSData *dechunk(NSData *d) {
 }
 
 // Eine einzelne Anfrage ohne Weiterleitung. Liefert rohe Antwort (Header+Body) oder Fehler.
-static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
+static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err, void (^progress)(NSUInteger)) {
     BOOL tls = [url.scheme.lowercaseString isEqualToString:@"https"];
     NSString *host = url.host;
     if (!host.length) { *err = L(@"Invalid address"); return nil; }
@@ -149,6 +149,7 @@ static NSData *rawRequest(NSURL *url, NSUInteger maxBytes, NSString **err) {
 #endif
             if (r <= 0) break;
             [resp appendBytes:buf length:(NSUInteger)r];
+            if (progress) progress(resp.length);
             if (resp.length > maxBytes + 65536) { *err = L(@"Response too large"); resp = nil; break; }
         }
     }
@@ -160,7 +161,9 @@ done:
 
 @implementation RBNet
 
-+ (RBResponse *)fetch:(NSURL *)url maxBytes:(NSUInteger)maxBytes {
++ (RBResponse *)fetch:(NSURL *)url maxBytes:(NSUInteger)maxBytes { return [self fetch:url maxBytes:maxBytes progress:nil]; }
+
++ (RBResponse *)fetch:(NSURL *)url maxBytes:(NSUInteger)maxBytes progress:(void (^)(NSUInteger))progress {
     RBResponse *res = [RBResponse new];
     BOOL allSecure = YES;
     for (int hop = 0; hop <= MAX_REDIRECTS; hop++) {
@@ -168,7 +171,7 @@ done:
         if (![scheme isEqualToString:@"https"] && ![scheme isEqualToString:@"http"]) { res.error = L(@"Only http/https is supported"); return res; }
         if (![scheme isEqualToString:@"https"]) allSecure = NO;
         NSString *err = nil;
-        NSData *raw = rawRequest(url, maxBytes, &err);
+        NSData *raw = rawRequest(url, maxBytes, &err, progress);
         res.url = url;
         if (!raw) { res.error = err ?: L(@"No response"); return res; }
 

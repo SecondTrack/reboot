@@ -84,3 +84,4 @@
 "Invalid response" = "Invalid response";
 "Invalid redirect" = "Invalid redirect";
 "Too many redirects" = "Too many redirects";
+"Downloading … %d %%" = "Downloading … %d %%";

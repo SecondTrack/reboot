@@ -22,7 +22,9 @@ static NSString* plainVersion(NSString*v){ v=[v hasPrefix:@"v"]?[v substringFrom
 - (BOOL)hasUpdate {
     if(!self.releaseVersion || !self.isInstalled) return NO;
     if(self.installedByHand && !self.installedVersion) return YES;           // per Hand kopiert: Version unbekannt
-    return ![plainVersion(self.installedVersion) isEqualToString:plainVersion(self.releaseVersion)];
+    // Nur eine wirklich neuere Version ist ein Update (numerisch: 0.2.10 > 0.2.9) – sonst
+    // "aktualisiert" der Store eine neuere, von Hand installierte Version auf die ältere zurück.
+    return [plainVersion(self.installedVersion) compare:plainVersion(self.releaseVersion) options:NSNumericSearch] == NSOrderedAscending;
 }
 @end
 
@@ -72,7 +74,7 @@ static RBApp* appFrom(NSDictionary*d){
     for(RBApp*a in [out arrayByAddingObject:st?:(id)[NSNull null]]) if([a isKindOfClass:[RBApp class]]) for(RBApp*o in [_apps arrayByAddingObject:_store?:(id)[NSNull null]])
         if([o isKindOfClass:[RBApp class]] && [o.ident isEqualToString:a.ident]){
             if(!a.debURL.length){ a.releaseVersion=o.releaseVersion; a.debURL=o.debURL; a.sha256=o.sha256; a.debSize=o.debSize; }
-            a.busy=o.busy; a.busyText=o.busyText; }
+            a.busy=o.busy; a.busyText=o.busyText; a.busyProgress=o.busyProgress; }
     _apps=out; _store=st;
     return YES;
 }
@@ -180,17 +182,36 @@ static NSString* helperError(int rc){
         default: return LF(@"Install helper missing or crashed (%d).",rc); }
 }
 
+- (RBApp *)liveApp:(NSString *)ident {
+    for(RBApp*a in [_apps arrayByAddingObject:_store?:(id)[NSNull null]]) if([a isKindOfClass:[RBApp class]] && [a.ident isEqualToString:ident]) return a;
+    return nil;
+}
+
 - (void)install:(RBApp *)app progress:(void(^)(NSString *))progress done:(void(^)(NSString *))done {
     if(!app.debURL.length){ done(L(@"There is no package for this app yet.")); return; }
-    app.busy=YES; NSString*url=app.debURL, *sha=app.sha256, *ver=app.releaseVersion, *pkg=app.package; long long size=app.debSize;
+    app.busy=YES; app.busyProgress=-1; NSString*url=app.debURL, *sha=app.sha256, *ver=app.releaseVersion, *pkg=app.package; long long size=app.debSize;
     // iOS soll den Store während Download/Installation nicht einfrieren (Gnadenfrist ~10 min)
     __block UIBackgroundTaskIdentifier bg=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{ [[UIApplication sharedApplication] endBackgroundTask:bg]; bg=UIBackgroundTaskInvalid; }];
-    void (^say)(NSString*)=^(NSString*t){ dispatch_async(dispatch_get_main_queue(), ^{ app.busyText=t; if(progress) progress(t); }); };
-    void (^finish)(NSString*)=^(NSString*e){ dispatch_async(dispatch_get_main_queue(), ^{ app.busy=NO; app.busyText=nil; [self reloadInstalled]; done(e);
+    // Lädt der Katalog währenddessen neu, gibt es ein neues Objekt für die App: beide aktuell halten.
+    NSString*ident=app.ident;
+    void (^sayP)(NSString*,float)=^(NSString*t,float p){ dispatch_async(dispatch_get_main_queue(), ^{
+        for(RBApp*x in @[app, [self liveApp:ident]?:app]){ x.busy=YES; x.busyText=t; x.busyProgress=p; }
+        if(progress) progress(t); }); };
+    void (^say)(NSString*)=^(NSString*t){ sayP(t,-1); };
+    void (^finish)(NSString*)=^(NSString*e){ dispatch_async(dispatch_get_main_queue(), ^{
+        for(RBApp*x in @[app, [self liveApp:ident]?:app]){ x.busy=NO; x.busyText=nil; x.busyProgress=-1; }
+        [self reloadInstalled]; done(e);
         if(bg!=UIBackgroundTaskInvalid){ [[UIApplication sharedApplication] endBackgroundTask:bg]; bg=UIBackgroundTaskInvalid; } }); };
     dispatch_async(_q, ^{ @autoreleasepool {
-        say(L(@"Downloading …"));
-        RBResponse*r=[RBNet fetch:[NSURL URLWithString:url] maxBytes:(NSUInteger)MAX(size,1)+1024];
+        sayP(L(@"Downloading …"),size>0?0:-1);
+        __block int lastPct=-1;   // höchstens jedes volle Prozent neu zeichnen
+        RBResponse*r=[RBNet fetch:[NSURL URLWithString:url] maxBytes:(NSUInteger)MAX(size,1)+1024 progress:^(NSUInteger got){
+            if(size<=0) return;
+            int pct=(int)MIN(100LL,(long long)got*100/size);
+            if(pct==lastPct) return;
+            lastPct=pct;
+            sayP(LF(@"Downloading … %d %%",pct),pct/100.0f);
+        }];
         if(r.error || r.status!=200 || !r.body.length){ finish(r.error?:LF(@"Download failed (HTTP %d from %@)",r.status,r.url.host?:@"?")); return; }
         if(size>0 && (long long)r.body.length!=size){ finish(L(@"Download incomplete – please try again.")); return; }
         say(L(@"Checking …"));
@@ -204,7 +225,7 @@ static NSString* helperError(int rc){
     }});
 }
 - (void)remove:(RBApp *)app done:(void(^)(NSString *))done {
-    app.busy=YES; app.busyText=L(@"Removing …"); NSString*pkg=app.package;
+    app.busy=YES; app.busyProgress=-1; app.busyText=L(@"Removing …"); NSString*pkg=app.package;
     dispatch_async(_q, ^{
         int rc=helper(@[@"remove",pkg]);
         dispatch_async(dispatch_get_main_queue(), ^{ app.busy=NO; app.busyText=nil; [self reloadInstalled]; done(helperError(rc)); });

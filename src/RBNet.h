@@ -13,4 +13,6 @@
 @interface RBNet : NSObject
 // Synchron, NICHT auf dem Main-Thread aufrufen. maxBytes begrenzt die Antwortgröße.
 + (RBResponse *)fetch:(NSURL *)url maxBytes:(NSUInteger)maxBytes;
+// wie oben; progress meldet die bisher empfangenen Bytes (Hintergrund-Thread)
++ (RBResponse *)fetch:(NSURL *)url maxBytes:(NSUInteger)maxBytes progress:(void (^)(NSUInteger received))progress;
 @end

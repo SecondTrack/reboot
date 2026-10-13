@@ -116,6 +116,9 @@ static void stopPackage(const char *pkg) {
         if (lstat(line, &st) != 0 || !S_ISREG(st.st_mode) || !(st.st_mode & S_IXUSR)) continue;   // nur ausführbare Dateien
         const char *b = strrchr(line, '/'); if (!b) continue; b++;
         if (!strcmp(b, "rbhelper")) continue;                                                      // sich selbst nicht
+        // Mesh-Tor weiterlaufen lassen: es liest nach jedem Neustart ~30 MB Netzverzeichnis ein (am iPod
+        // eine Minute). Das laufende Programm behält die alte Datei; Mesh startet es bei Bedarf selbst.
+        if (!strcmp(b, "mesh-tor")) continue;
         strncpy(names[n], b, 16); names[n][16] = 0; n++;                                            // p_comm ist max. 16 Zeichen
     }
     if (!n) return;

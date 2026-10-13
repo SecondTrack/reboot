@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *installedVersion;                   // nil = nicht installiert
 @property (nonatomic) BOOL installedByHand;                               // App da, aber nicht über dpkg
 @property (nonatomic) BOOL busy; @property (nonatomic, copy) NSString *busyText;
+@property (nonatomic) float busyProgress;   // 0…1 beim Laden, <0: kein Balken
 - (BOOL)isInstalled;
 - (BOOL)hasUpdate;
 @end
