@@ -482,7 +482,7 @@
         "Logs every connection per app",
         "Kill switch and one-tap reset"
       ],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png?v=8d15ed8b",
+      "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png?v=ebdbb29d",
       "private": false,
       "release": {
         "version": "0.6.3",
