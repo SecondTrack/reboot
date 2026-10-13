@@ -462,11 +462,11 @@
     {
       "id": "security",
       "name": "Mesh Security",
-      "short": "Shield for jailbroken iPods: random password instead of alpine, all incoming ports closed, only the apps you allow go online, every connection logged.",
-      "category": "",
+      "short": "Shield your jailbroken iPod",
+      "category": "Tools",
       "status": "beta",
       "ios": [
-        "6.1.6"
+        "5.0 – 6.1"
       ],
       "package": "de.mesh.security",
       "version": "0.6.0",
@@ -474,16 +474,34 @@
       "requires": "",
       "license": "GPL-3.0",
       "bundle": "de.mesh.security",
-      "text": "Shield for jailbroken iPods: random password instead of alpine, all incoming ports closed, only the apps you allow go online, every connection logged.",
-      "features": [],
-      "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png",
+      "text": "One switch: a random password instead of alpine, every incoming port closed, only the apps you allow go online. Turn it off and everything is back as before.",
+      "features": [
+        "Replaces the alpine password",
+        "Closes all incoming ports",
+        "Only allowed apps go online",
+        "Logs every connection per app",
+        "Kill switch and one-tap reset"
+      ],
+      "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png?v=8d15ed8b",
       "private": false,
       "release": {
         "version": "0.6.0",
         "url": "https://github.com/SecondTrack/security/releases/download/v0.6.0/de.mesh.security_0.6.0_iphoneos-arm.deb",
         "size": 80986,
         "sha256": "994eb71cfe91dd9b46364f28f88aa84dc858c3ce8abf71d7a8ff67463b125740"
-      }
+      },
+      "install": "GitHub release: latest release, *.deb asset",
+      "name_de": "Mesh Security",
+      "short_de": "Schutz für deinen iPod",
+      "category_de": "Werkzeuge",
+      "text_de": "Ein Schalter: zufälliges Passwort statt alpine, alle eingehenden Ports zu, nur erlaubte Apps gehen online. Ausschalten stellt alles wieder her.",
+      "features_de": [
+        "Ersetzt das alpine-Passwort",
+        "Schließt alle eingehenden Ports",
+        "Nur erlaubte Apps gehen online",
+        "Zeigt jede Verbindung pro App",
+        "Notschalter und Zurücksetzen mit einem Tipp"
+      ]
     }
   ],
   "hinweis": "Der Reboot Appstore liest diese Datei. Pro App: neuestes GitHub-Release, Anhang *.deb (SHA-256 aus der GitHub-API wird geprüft)."
