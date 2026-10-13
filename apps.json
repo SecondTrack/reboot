@@ -469,7 +469,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.security",
-      "version": "0.6.0",
+      "version": "0.6.1",
       "repo": "SecondTrack/security",
       "requires": "",
       "license": "GPL-3.0",
@@ -485,10 +485,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/security/main/Resources/Icon@2x.png?v=8d15ed8b",
       "private": false,
       "release": {
-        "version": "0.6.0",
-        "url": "https://github.com/SecondTrack/security/releases/download/v0.6.0/de.mesh.security_0.6.0_iphoneos-arm.deb",
-        "size": 80986,
-        "sha256": "994eb71cfe91dd9b46364f28f88aa84dc858c3ce8abf71d7a8ff67463b125740"
+        "version": "0.6.1",
+        "url": "https://github.com/SecondTrack/security/releases/download/v0.6.1/de.mesh.security_0.6.1_iphoneos-arm.deb",
+        "size": 82230,
+        "sha256": "ce80a534d3477de5ef6dece1e4734026a4ef31086aff51ae1779b57b3916c400"
       },
       "install": "GitHub release: latest release, *.deb asset",
       "name_de": "Mesh Security",
