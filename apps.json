@@ -344,7 +344,7 @@
         "5.0 – 6.1"
       ],
       "package": "de.mesh.music",
-      "version": "0.2.7",
+      "version": "0.2.8",
       "repo": "SecondTrack/riff",
       "requires": "Spotify-Konto",
       "license": "GPL-3.0",
@@ -360,10 +360,10 @@
       "icon": "https://raw.githubusercontent.com/SecondTrack/reboot/main/icons/riff.png?v=257b8d5e",
       "private": false,
       "release": {
-        "version": "0.2.7",
-        "url": "https://github.com/SecondTrack/riff/releases/download/v0.2.7/de.mesh.music_0.2.7_iphoneos-arm.deb",
-        "size": 586188,
-        "sha256": "c593e7a10ad849785c9aa5fe4e71f5922983fd5238b1551ad3d2e077cb741844"
+        "version": "0.2.8",
+        "url": "https://github.com/SecondTrack/riff/releases/download/v0.2.8/de.mesh.music_0.2.8_iphoneos-arm.deb",
+        "size": 587464,
+        "sha256": "e497c2898e91045f58d9cd19506626bf1d47cced1f4509badccbadc4e0d67bc4"
       },
       "name_de": "Riff",
       "short_de": "Musik für dein Spotify-Konto",
