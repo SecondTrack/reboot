@@ -2,7 +2,7 @@
 #import "RBNet.h"
 #import "MeshL10n.h"
 #import <UIKit/UIKit.h>
-#import <CommonCrypto/CommonDigest.h>
+#import <stdio.h>
 #import <spawn.h>
 #import <sys/wait.h>
 
@@ -160,9 +160,6 @@ static RBApp* appFrom(NSDictionary*d){
 
 #pragma mark - Installieren
 
-static NSString* sha256Hex(NSData*d){ unsigned char h[CC_SHA256_DIGEST_LENGTH]; CC_SHA256(d.bytes,(CC_LONG)d.length,h);
-    NSMutableString*s=[NSMutableString string]; for(int i=0;i<CC_SHA256_DIGEST_LENGTH;i++)[s appendFormat:@"%02x",h[i]]; return s; }
-
 // setuid-Helfer im App-Bundle starten und auf Ende warten
 static int helper(NSArray*args){
     NSString*hp=[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"rbhelper"];
@@ -204,24 +201,38 @@ static NSString* helperError(int rc){
         if(bg!=UIBackgroundTaskInvalid){ [[UIApplication sharedApplication] endBackgroundTask:bg]; bg=UIBackgroundTaskInvalid; } }); };
     dispatch_async(_q, ^{ @autoreleasepool {
         sayP(L(@"Downloading …"),size>0?0:-1);
-        __block int lastPct=-1;   // höchstens jedes volle Prozent neu zeichnen
-        RBResponse*r=[RBNet fetch:[NSURL URLWithString:url] maxBytes:(NSUInteger)MAX(size,1)+1024 progress:^(NSUInteger got){
+        __block int lastPct=-1; __block CFAbsoluteTime lastT=0;   // höchstens jedes volle Prozent, max. ~4x pro Sekunde
+        // Paket wird direkt in eine Teildatei gestreamt (nie ganz im Speicher); SHA-256 über genau die geschriebenen Bytes
+        NSString*file=[DLDIR stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@.deb",pkg,ver]];
+        NSString*part=[file stringByAppendingString:@".part"];
+        RBResponse*r=[RBNet download:[NSURL URLWithString:url] toFile:part maxBytes:(NSUInteger)MAX(size,1)+1024 progress:^(NSUInteger got){
             if(size<=0) return;
             int pct=(int)MIN(100LL,(long long)got*100/size);
             if(pct==lastPct) return;
-            lastPct=pct;
+            CFAbsoluteTime now=CFAbsoluteTimeGetCurrent();
+            if(pct<100 && now-lastT<0.25) return;
+            lastPct=pct; lastT=now;
             sayP(LF(@"Downloading … %d %%",pct),pct/100.0f);
         }];
-        if(r.error || r.status!=200 || !r.body.length){ finish(r.error?:LF(@"Download failed (HTTP %d from %@)",r.status,r.url.host?:@"?")); return; }
-        if(size>0 && (long long)r.body.length!=size){ finish(L(@"Download incomplete – please try again.")); return; }
+        NSFileManager*fm=[NSFileManager defaultManager];
+        if(r.error || r.status!=200 || r.bodyLength<=0){ [fm removeItemAtPath:part error:NULL]; finish(r.error?:LF(@"Download failed (HTTP %d from %@)",r.status,r.url.host?:@"?")); return; }
+        if(size>0 && r.bodyLength!=size){ [fm removeItemAtPath:part error:NULL]; finish(L(@"Download incomplete – please try again.")); return; }
         say(L(@"Checking …"));
-        if(sha.length && ![sha256Hex(r.body) isEqualToString:sha.lowercaseString]){ finish(L(@"Checksum mismatch – package discarded.")); return; }
-        NSString*file=[DLDIR stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@.deb",pkg,ver]];
-        if(![r.body writeToFile:file atomically:YES]){ finish(L(@"Not enough space to save.")); return; }
+        if(sha.length && ![r.sha256 isEqualToString:sha.lowercaseString]){ [fm removeItemAtPath:part error:NULL]; finish(L(@"Checksum mismatch – package discarded.")); return; }
+        // erst nach bestandener Prüfung atomar an den endgültigen Platz
+        if(rename(part.fileSystemRepresentation,file.fileSystemRepresentation)!=0){ [fm removeItemAtPath:part error:NULL]; finish(L(@"Not enough space to save.")); return; }
         say(L(@"Installing …"));
         int rc=helper(@[@"install",file]);
         [[NSFileManager defaultManager] removeItemAtPath:file error:NULL];
         finish(helperError(rc));
+        // Store hat sich selbst aktualisiert: der Helfer beendet ihn bewusst nicht (sonst bräche die Installation ab),
+        // also läuft noch die alte Version. Kurz das Ergebnis zeigen, dann zum Home-Bildschirm und beenden –
+        // beim nächsten Öffnen startet die neue.
+        if(rc==0 && [pkg isEqualToString:@"de.mesh.shop"]) dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(1.5*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIApplication*ua=[UIApplication sharedApplication];
+            if([ua respondsToSelector:@selector(suspend)]) [ua performSelector:@selector(suspend)];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW,(int64_t)(0.8*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ exit(0); });
+        });
     }});
 }
 - (void)remove:(RBApp *)app done:(void(^)(NSString *))done {

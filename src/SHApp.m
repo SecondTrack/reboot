@@ -46,12 +46,42 @@ static void launchApp(NSString *bid){
     void*h=dlopen("/System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices", RTLD_LAZY);
     if(!h) return; int (*f)(CFStringRef,Boolean)=dlsym(h,"SBSLaunchApplicationWithIdentifier"); if(f) f((__bridge CFStringRef)bid,false);
 }
+// Dekodierte Icons im Speicher halten, damit ein Neuaufbau der Liste nicht jedes PNG neu von Platte liest/dekodiert.
+// Bei Speicherwarnung wird der Zwischenspeicher geleert (SHAppDelegate).
+static NSCache* iconCache(void){
+    static NSCache*c; static dispatch_once_t o; dispatch_once(&o,^{ c=[NSCache new]; c.countLimit=48; });
+    return c;
+}
+// Bild einmal in eine Bitmap zeichnen (gleiche Pixelgröße und Skala), damit das Dekodieren nicht bei jedem Anzeigen passiert
+static UIImage* decoded(UIImage*im){
+    CGImageRef src=im.CGImage; if(!src) return im;
+    size_t w=CGImageGetWidth(src), h=CGImageGetHeight(src); if(!w || !h) return im;
+    CGColorSpaceRef cs=CGColorSpaceCreateDeviceRGB();
+    CGContextRef ctx=CGBitmapContextCreate(NULL,w,h,8,0,cs,kCGImageAlphaPremultipliedFirst|kCGBitmapByteOrder32Little);
+    CGColorSpaceRelease(cs); if(!ctx) return im;
+    CGContextDrawImage(ctx,CGRectMake(0,0,w,h),src);
+    CGImageRef out=CGBitmapContextCreateImage(ctx); CGContextRelease(ctx); if(!out) return im;
+    UIImage*r=[UIImage imageWithCGImage:out scale:im.scale orientation:im.imageOrientation]; CGImageRelease(out);
+    return r;
+}
 // Icon: mitgeliefert, sonst aus dem Repo (zwischengespeichert)
 static void setIcon(UIImageView*iv, RBApp*a){
     NSString*k=localKey(a); NSString*p=k?[[NSBundle mainBundle] pathForResource:k ofType:@"png" inDirectory:@"ic"]:nil;
-    if(p){ iv.image=[UIImage imageWithContentsOfFile:p]; return; }
-    iv.image=nil; objc_setAssociatedObject(iv,"id",a.ident,OBJC_ASSOCIATION_COPY_NONATOMIC);
-    [[RBStore shared] icon:a done:^(NSData*png){ if(png && [objc_getAssociatedObject(iv,"id") isEqualToString:a.ident]) iv.image=[UIImage imageWithCGImage:[UIImage imageWithData:png].CGImage scale:2 orientation:UIImageOrientationUp]; }];
+    if(p){
+        UIImage*im=[iconCache() objectForKey:p];
+        if(!im){ im=[UIImage imageWithContentsOfFile:p]; if(im){ im=decoded(im); [iconCache() setObject:im forKey:p]; } }
+        iv.image=im; return;
+    }
+    NSString*key=[NSString stringWithFormat:@"%@|%@",a.ident,a.iconURL?:@""];
+    UIImage*hit=[iconCache() objectForKey:key];
+    objc_setAssociatedObject(iv,"id",a.ident,OBJC_ASSOCIATION_COPY_NONATOMIC);
+    if(hit){ iv.image=hit; return; }
+    iv.image=nil;
+    [[RBStore shared] icon:a done:^(NSData*png){
+        if(!png) return;
+        UIImage*im=[iconCache() objectForKey:key];
+        if(!im){ UIImage*raw=[UIImage imageWithData:png]; if(raw.CGImage){ im=decoded([UIImage imageWithCGImage:raw.CGImage scale:2 orientation:UIImageOrientationUp]); [iconCache() setObject:im forKey:key]; } }
+        if(im && [objc_getAssociatedObject(iv,"id") isEqualToString:a.ident]) iv.image=im; }];
 }
 
 // ---- Vorschau-/Screenshot-Kachel (mitgelieferte Bilder, sonst Platzhalter) ----
@@ -65,6 +95,15 @@ static UIView* shotTile(RBApp*a, int n, CGRect f){
     return wrap;
 }
 
+#define kBusyLabelTag 0x52424C   // Fortschritts-Text im "läuft gerade"-Knopf (wird direkt aktualisiert)
+// Nur den Fortschritts-Text ändern, statt alles neu zu bauen. NO = kein passender Text da (dann neu bauen).
+static BOOL updateBusyLabel(UIView*host, NSString*text){
+    UILabel*l=(UILabel*)[host viewWithTag:kBusyLabelTag];
+    if(![l isKindOfClass:[UILabel class]]) return NO;
+    if(![l.text isEqualToString:text]) l.text=text;
+    return YES;
+}
+
 // ---- Aktions-Knopf: Laden / Aktualisieren / Öffnen / läuft gerade ----
 @protocol SHActions <NSObject>
 - (void)doOpen:(UIButton *)b; - (void)doInstall:(UIButton *)b;
@@ -73,7 +112,7 @@ static UIView* actionButton(RBApp*a, CGRect f, id<SHActions> target){
     if(a.busy){
         UIView*v=[[UIView alloc] initWithFrame:f];
         UIActivityIndicatorView*sp=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray]; sp.center=CGPointMake(12,f.size.height/2); [sp startAnimating]; [v addSubview:sp];
-        UILabel*l=[[UILabel alloc] initWithFrame:CGRectMake(24,0,f.size.width-24,f.size.height)]; l.text=a.busyText?:@"…"; l.font=[UIFont systemFontOfSize:12]; l.textColor=MUT; l.backgroundColor=[UIColor clearColor]; l.adjustsFontSizeToFitWidth=YES; [v addSubview:l];
+        UILabel*l=[[UILabel alloc] initWithFrame:CGRectMake(24,0,f.size.width-24,f.size.height)]; l.tag=kBusyLabelTag; l.text=a.busyText?:@"…"; l.font=[UIFont systemFontOfSize:12]; l.textColor=MUT; l.backgroundColor=[UIColor clearColor]; l.adjustsFontSizeToFitWidth=YES; [v addSubview:l];
         return v;
     }
     UIButton*b=[UIButton buttonWithType:UIButtonTypeCustom]; b.frame=f; b.layer.cornerRadius=f.size.height/2;
@@ -86,8 +125,9 @@ static UIView* actionButton(RBApp*a, CGRect f, id<SHActions> target){
     else { b.backgroundColor=C(233,233,238); [b setTitle:(a.isPrivate?L(@"Private"):L(@"Soon")) forState:UIControlStateNormal]; [b setTitleColor:MUT forState:UIControlStateNormal]; b.enabled=NO; }
     return b;
 }
-static void runInstall(RBApp*a, void(^redraw)(void)){
-    [[RBStore shared] install:a progress:^(NSString*t){ redraw(); } done:^(NSString*e){
+// redraw: alles neu zeichnen; tick: nur Fortschritts-Text (fällt selbst auf redraw zurück)
+static void runInstall(RBApp*a, void(^redraw)(void), void(^tick)(NSString*)){
+    [[RBStore shared] install:a progress:^(NSString*t){ tick(t); } done:^(NSString*e){
         redraw();
         if(e) [[[UIAlertView alloc] initWithTitle:a.name message:e delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
     }];
@@ -175,7 +215,8 @@ static void runInstall(RBApp*a, void(^redraw)(void)){
 }
 - (void)closeZoom:(UITapGestureRecognizer *)g { UIView*ov=g.view; [UIView animateWithDuration:0.2 animations:^{ ov.alpha=0; } completion:^(BOOL f){ [ov removeFromSuperview]; }]; }
 - (void)doOpen:(UIButton *)b { launchApp(_app.bundle); }
-- (void)doInstall:(UIButton *)b { __weak SHDetailController*ws=self; runInstall(_app,^{ [ws drawButton]; }); }
+- (void)doInstall:(UIButton *)b { __weak SHDetailController*ws=self; runInstall(_app,^{ [ws drawButton]; },^(NSString*t){ [ws progressText:t]; }); }
+- (void)progressText:(NSString *)t { if(!_app.busy || !updateBusyLabel(_btnHost,t)) [self drawButton]; }
 - (void)askRemove {
     UIAlertView*a=[[UIAlertView alloc] initWithTitle:_app.name message:L(@"Remove this app from your iPod?") delegate:self cancelButtonTitle:L(@"Cancel") otherButtonTitles:L(@"Remove"),nil]; [a show];
 }
@@ -293,7 +334,20 @@ static void runInstall(RBApp*a, void(^redraw)(void)){
     SHDetailController*d=[[SHDetailController alloc] init]; d.app=objc_getAssociatedObject(g.view,"app"); [self.navigationController pushViewController:d animated:YES];
 }
 - (void)doOpen:(UIButton *)b { launchApp(((RBApp*)objc_getAssociatedObject(b,"app")).bundle); }
-- (void)doInstall:(UIButton *)b { __weak SHListController*ws=self; runInstall(objc_getAssociatedObject(b,"app"),^{ [ws build]; }); }
+- (void)doInstall:(UIButton *)b {
+    __weak SHListController*ws=self; RBApp*a=objc_getAssociatedObject(b,"app"); NSString*ident=a.ident;
+    runInstall(a,^{ [ws build]; },^(NSString*t){ [ws progressText:t forApp:ident]; });
+}
+// Fortschritt: nur den Text auf der Karte dieser App ändern (Karten-App kann nach Katalog-Neuladen ein neues Objekt sein)
+- (void)progressText:(NSString *)t forApp:(NSString *)ident {
+    for(UIView*card in _sc.subviews){
+        RBApp*ca=objc_getAssociatedObject(card,"app");
+        if(![ca.ident isEqualToString:ident]) continue;
+        if(ca.busy && updateBusyLabel(card,t)) return;
+        break;
+    }
+    [self build];
+}
 @end
 
 @interface SHAppDelegate : UIResponder <UIApplicationDelegate>
@@ -309,4 +363,5 @@ static void runInstall(RBApp*a, void(^redraw)(void)){
     [self.window makeKeyAndVisible];
     return YES;
 }
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)a { [iconCache() removeAllObjects]; }
 @end
